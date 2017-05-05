@@ -1,3 +1,4 @@
+/*jshint esversion:6*/
 const express = require('express');
 const Topics = express.Router();
 const { Topic } = require('../../models');
@@ -10,8 +11,8 @@ Topics.get('/', (req, res) => {
 
 Topics.post('/', (req, res) => {
   Topic.create({
+    created_by: req.body.created_by,
     name: req.body.name,
-    created_by: req.body.created_by
   })
   .then( (topic) => {
     res.json(topic);
