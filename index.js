@@ -8,17 +8,17 @@ const bodyParser = require('body-parser');
 
 // Environment variables
 const db = require('./models');
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Routes
-const apiRoutes = require('./routes/apiRoutes.js');
+const apiRoutes = require('./api');
 
 // Serve static files from /public
-app.use('/static', express.static('/public'));
+app.use(express.static('/public'));
 
 // parse application/x-www-form-urlencoded
 // attach to req.body
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 // Use defined routes
 app.use('/api', apiRoutes);
