@@ -23,8 +23,8 @@ Users.post('/', (req, res) => {
   User.create({
     name: req.body.name
   })
-  .then( (users) => {
-    res.json(users);
+  .then( (user) => {
+    res.json(user);
   })
   .catch( (err) => {
     res.json(err);

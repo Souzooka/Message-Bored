@@ -8,4 +8,33 @@ Topics.get('/', (req, res) => {
   });
 });
 
+Topics.post('/', (req, res) => {
+  Topic.create({
+    name: req.body.name,
+    created_by: req.body.created_by
+  })
+  .then( (topics) => {
+    res.json(topics);
+  })
+  .catch( (err) => {
+    res.json(err);
+  });
+});
+
+Topics.put('/:name', (req, res) => {
+  Topic.update({
+    name: req.params.name
+  }, {
+    where: {
+      name: req.body.name,
+    }
+  })
+  .then( (topic) => {
+    res.json(topic);
+  })
+  .catch( (err) => {
+    res.json(err);
+  });
+});
+
 module.exports = Topics;
