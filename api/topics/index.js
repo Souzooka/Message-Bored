@@ -13,8 +13,8 @@ Topics.post('/', (req, res) => {
     name: req.body.name,
     created_by: req.body.created_by
   })
-  .then( (topics) => {
-    res.json(topics);
+  .then( (topic) => {
+    res.json(topic);
   })
   .catch( (err) => {
     res.json(err);
