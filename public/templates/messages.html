@@ -3,7 +3,7 @@
 <div ng-repeat="message in messages">
   <br>
   Id: {{ message.id }}<br>
-  Author: {{ message.Author.name }}<br>
+  Author: <a href="user/{{ message.Author.id }}">{{ message.Author.name }}</a><br>
   Topic: {{ message.Topic.name }}<br>
   Content: {{ message.body }}<br>
   Created at: {{ message.createdAt }}<br>

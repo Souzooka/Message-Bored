@@ -3,6 +3,6 @@
 <div ng-repeat="user in users">
   <br>
   Id: {{ user.id }}<br>
-  Username: {{ user.name }}<br>
+  Username: <a href="user/{{ user.id }}">{{ user.name }}</a><br>
   Created at: {{ user.createdAt }}<br>
 </div>

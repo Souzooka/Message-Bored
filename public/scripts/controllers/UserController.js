@@ -2,10 +2,11 @@ angular.module('MessageBored')
 .controller('UserController', [
   '$scope',
   '$http',
-  function ($scope, $http) {
+  '$routeParams',
+  function ($scope, $http, $routeParams) {
 
+    //for all users
     $scope.users = '';
-
     $http({
       method: 'GET',
       url: `/api/users/`
@@ -14,7 +15,21 @@ angular.module('MessageBored')
       $scope.users = data.data;
     })
     .catch( (err) => {
-      alert(err);
+      console.log(err);
     });
+
+    //for one user
+    $scope.user = '';
+    $http({
+      method: 'GET',
+      url: `/api/users/${$routeParams.id}`
+    })
+    .then( (data, status, headers, config) => {
+      $scope.user = data.data;
+    })
+    .catch( (err) => {
+      console.log(err);
+    });
+
   }
 ]);

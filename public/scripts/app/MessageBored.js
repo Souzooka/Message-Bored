@@ -7,6 +7,11 @@ angular.module('MessageBored', ['ngRoute'])
         .when('/', {
           templateUrl: '/templates/home.html'
         })
+        .when('/user/:id', {
+          templateUrl: '/templates/user.html',
+          controller: 'UserController',
+          controllerAs: 'users'
+        })
         .when('/users', {
           templateUrl: '/templates/users.html',
           controller: 'UserController',
