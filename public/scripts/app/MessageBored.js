@@ -5,7 +5,9 @@ angular.module('MessageBored', ['ngRoute'])
 
       $routeProvider
         .when('/', {
-          templateUrl: '/templates/home.html'
+          templateUrl: '/templates/home.html',
+          controller: 'TopicController',
+          controllerAs: 'topics'
         })
         .when('/user/:id', {
           templateUrl: '/templates/user.html',
@@ -21,6 +23,11 @@ angular.module('MessageBored', ['ngRoute'])
           templateUrl: '/templates/messages.html',
           controller: 'MessageController',
           controllerAs: 'messages'
+        })
+        .when('/topic/:id', {
+          templateUrl: '/templates/topic.html',
+          controller: 'TopicController',
+          controllerAs: 'topics'
         });
 
       $locationProvider.html5Mode({

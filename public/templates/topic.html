@@ -1,0 +1,9 @@
+<h1>Topic</h1>
+
+<div ng-repeat="topic in topics">
+  <br>
+  Id: {{ topic.id }}<br>
+  Topic: {{ topic.name }}<br>
+  Author: <a href="user/{{ topic.Author.id }}">{{ topic.Author.name }}</a><br>
+  Created at: {{ topic.createdAt }}<br>
+</div>

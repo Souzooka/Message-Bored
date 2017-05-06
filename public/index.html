@@ -12,7 +12,14 @@
       <ul>
         <li><a ng-href="/">Home</a></li>
         <li><a ng-href="/users">Users</a></li>
-        <li><a ng-href="/messages">Messages</a></li>
+        <span>-------------------</span>
+        <div ng-controller="TopicController">
+          <div ng-repeat="topic in topics">
+            <li><a ng-href="/topic/{{topic.id}}">{{topic.name}}</a></li>
+          </div>
+        </div>
+        <li><a ng-href="/messages">Latest</a></li>
+
       </ul>
     </nav>
 
@@ -26,5 +33,6 @@
   <script src="/scripts/constants.js"></script>
   <script src="/scripts/controllers/UserController.js"></script>
   <script src="/scripts/controllers/MessageController.js"></script>
+  <script src="/scripts/controllers/TopicController.js"></script>
 </body>
 </html>
