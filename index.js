@@ -2,6 +2,7 @@
 // Express init
 const express = require('express');
 const app = express();
+const fs = require('fs');
 
 // Middleware
 const bodyParser = require('body-parser');
@@ -14,7 +15,7 @@ const PORT = process.env.PORT || 3000;
 const apiRoutes = require('./api');
 
 // Serve static files from /public
-app.use(express.static('/public'));
+app.use(express.static('./public'));
 
 // parse application/x-www-form-urlencoded
 // attach to req.body
@@ -23,9 +24,20 @@ app.use(bodyParser.json());
 // Use defined routes
 app.use('/api', apiRoutes);
 
+// Catch any undefined routes and send to angular
+app.get('/*', (req, res) => {
+  const rs = fs.createReadStream('./public/index.html');
+  rs.on('open', () => {
+    rs.pipe(res);
+  });
+  rs.on('error', (err) => {
+    res.end(err);
+  });
+});
+
 // Initialize server
 const server = app.listen(PORT, () => {
-  db.sequelize.sync({force:true});
+  db.sequelize.sync();
 });
 
 // For testing

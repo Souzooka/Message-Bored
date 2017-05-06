@@ -1,10 +1,18 @@
 /*jshint esversion:6*/
 const express = require('express');
 const Topics = express.Router();
-const { Topic } = require('../../models');
+const { Topic, User } = require('../../models');
 
 Topics.get('/', (req, res) => {
-  Topic.all().then( (topics) => {
+  Topic.all({
+    include: [
+      {
+        model: User,
+        as: 'Creator'
+      }
+    ]
+  })
+  .then( (topics) => {
     res.json(topics);
   });
 });
@@ -22,13 +30,20 @@ Topics.post('/', (req, res) => {
   });
 });
 
-Topics.put('/:name', (req, res) => {
+Topics.put('/:id', (req, res) => {
   Topic.update({
-    name: req.params.name
+    name: req.body.name
   }, {
     where: {
-      name: req.body.name,
+      id: req.params.id,
     }
+  })
+  .then( (topic) => {
+    return Topic.find( {
+      where: {
+        id: req.params.id
+      }
+    });
   })
   .then( (topic) => {
     res.json(topic);

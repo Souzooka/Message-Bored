@@ -1,17 +1,25 @@
 /*jshint esversion:6*/
 const express = require('express');
-const db = require('../../models');
 const Messages = express.Router();
-const { Message } = require('../../models');
+const { Message, User, Topic } = require('../../models');
+const LATEST_LIMIT = 10;
 
 Messages.get('/latest', (req, res) => {
   Message.all({
-    include: [{
-      model: db.Topic,
-      attributes: ['name']
-    }],
-    limit: 10,
-    order: '"createdAt" DESC',
+     include: [
+      {
+        model: User,
+        as: 'Author'
+      },
+      {
+        model: Topic,
+        as: 'Topic'
+      }
+    ],
+    limit: LATEST_LIMIT,
+    order: [
+      ['updatedAt', 'DESC']
+    ]
   })
   .then( (messages) => {
     res.json(messages);
@@ -20,15 +28,18 @@ Messages.get('/latest', (req, res) => {
 
 Messages.get('/by-topic/:topic_id', (req, res) => {
   Message.all({
-    include: [{
-      model: db.Topic,
-      attributes: ['name']
-    }, {
-      model: db.User,
-      as: 'Author',
-      attributes: ['name'],
-    }],
-    order: '"createdAt" ASC',
+    include: [
+      {
+        model: Topic,
+        as: 'Topic'
+      }, {
+        model: User,
+        as: 'Author',
+      }
+    ],
+    order: [
+      ['createdAt', 'ASC']
+    ],
     where: {
       topic_id: req.params.topic_id
     }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+  <div ng-app="MessageBored">
+
+    <nav>
+      <ul>
+        <li><a ng-href="/">Home</a></li>
+        <li><a ng-href="/users">Users</a></li>
+      </ul>
+    </nav>
+
+    <div ng-view></div>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.min.js"></script>
+  <script src="/scripts/MessageBored.js"></script>
+</body>
+</html>
