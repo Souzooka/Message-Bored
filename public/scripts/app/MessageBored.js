@@ -11,6 +11,11 @@ angular.module('MessageBored', ['ngRoute'])
           templateUrl: '/templates/users.html',
           controller: 'UserController',
           controllerAs: 'users'
+        })
+        .when('/messages', {
+          templateUrl: '/templates/messages.html',
+          controller: 'MessageController',
+          controllerAs: 'messages'
         });
 
       $locationProvider.html5Mode({

@@ -1,0 +1,10 @@
+<h1>Messages</h1>
+
+<div ng-repeat="message in messages">
+  <br>
+  Id: {{ message.id }}<br>
+  Author: {{ message.Author.name }}<br>
+  Topic: {{ message.Topic.name }}<br>
+  Content: {{ message.body }}<br>
+  Created at: {{ message.createdAt }}<br>
+</div>
