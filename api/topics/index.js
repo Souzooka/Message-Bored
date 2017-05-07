@@ -21,7 +21,13 @@ Topics.get('/:id', (req, res) => {
   Topic.find({
     where: {
       id: req.params.id,
-    }
+    },
+    include: [
+      {
+        model: User,
+        as: 'Creator'
+      }
+    ]
   })
   .then( (topic) => {
     res.json(topic);
