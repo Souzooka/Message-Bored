@@ -1,9 +1,20 @@
 <h1>Topic</h1>
 
-<div ng-repeat="topic in topics">
+<div>
   <br>
   Id: {{ topic.id }}<br>
   Topic: {{ topic.name }}<br>
   Author: <a href="user/{{ topic.Author.id }}">{{ topic.Author.name }}</a><br>
   Created at: {{ topic.createdAt }}<br>
+
+  <div ng-controller="MessageController">
+    <hr>
+    <div ng-repeat="message in messagesByTopic">
+      Id: {{ message.id }}<br>
+      Author: <a href="user/{{ message.Author.id }}">{{ message.Author.name }}</a><br>
+      Topic: {{ message.Topic.name }}<br>
+      Content: {{ message.body }}<br>
+      Created at: {{ message.createdAt }}<br>
+    </div>
+  </div>
 </div>

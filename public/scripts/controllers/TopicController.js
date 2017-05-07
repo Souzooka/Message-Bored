@@ -22,7 +22,7 @@ angular.module('MessageBored')
     $scope.topic = '';
     $http({
       method: 'GET',
-      url: `/api/topics/by-topic/${$routeParams.id}`
+      url: `/api/topics/${$routeParams.id}`
     })
     .then( (data, status, headers, config) => {
       $scope.topic = data.data;
