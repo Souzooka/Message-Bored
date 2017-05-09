@@ -31,5 +31,7 @@ angular.module('MessageBored')
       console.log(err);
     });
 
+    $scope.loggedIn = false;
+
   }
 ]);

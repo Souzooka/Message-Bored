@@ -11,6 +11,12 @@
     <nav>
       <ul>
         <li><a ng-href="/">Home</a></li>
+        <div ng-controller="UserController">
+          <div ng-hide="loggedIn">
+            <li>Login</li>
+            <li><a ng-href="/register">Register</li>
+          </div>
+        </div>
         <li><a ng-href="/users">Users</a></li>
         <span>-------------------</span>
         <div ng-controller="TopicController">
@@ -19,6 +25,11 @@
           </div>
         </div>
         <li><a ng-href="/messages">Latest</a></li>
+        <div ng-controller="UserController">
+          <div ng-show="loggedIn">
+            <li>Create New Topic</li>
+          </div>
+        </div>
 
       </ul>
     </nav>

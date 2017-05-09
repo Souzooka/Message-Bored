@@ -28,6 +28,9 @@ angular.module('MessageBored', ['ngRoute'])
           templateUrl: '/templates/topic.html',
           controller: 'TopicController',
           controllerAs: 'topics'
+        })
+        .when('/register', {
+          templateUrl: '/templates/register.html'
         });
 
       $locationProvider.html5Mode({
