@@ -17,9 +17,9 @@ const apiRoutes = require('./api');
 // Serve static files from /public
 app.use(express.static('./public'));
 
-// parse application/x-www-form-urlencoded
+// parse req
 // attach to req.body
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 // Use defined routes
 app.use('/api', apiRoutes);
